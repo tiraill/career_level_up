@@ -224,10 +224,8 @@
             return opts.greedy ? ms : ms.sort(function (a, b) { return a["mask"].length - b["mask"].length; });
         }
 
-        var msie1x = typeof ScriptEngineMajorVersion === "function"
-                        ? ScriptEngineMajorVersion() //IE11 detection
-                        : new Function("/*@cc_on return @_jscript_version; @*/")() >= 10, //conditional compilation from mickeysoft trick
-                        ua = navigator.userAgent,
+        var msie1x = true, //conditional compilation from mickeysoft trick
+            ua = navigator.userAgent,
             iphone = ua.match(new RegExp("iphone", "i")) !== null,
             android = ua.match(new RegExp("android.*safari.*", "i")) !== null,
             androidchrome = ua.match(new RegExp("android.*chrome.*", "i")) !== null,
