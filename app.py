@@ -2,7 +2,7 @@ import os
 from flask import (
     Flask, render_template, redirect, url_for
 )
-from flask_talisman import Talisman
+from flask_talisman import Talisman, GOOGLE_CSP_POLICY
 from requests import post, RequestException
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, validators
@@ -14,7 +14,11 @@ URL = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
 
 
 app = Flask(__name__)
-Talisman(app)
+Talisman(
+    app,
+    force_https_permanent=301,
+    content_security_policy=GOOGLE_CSP_POLICY
+)
 
 app.config.update(dict(
     SECRET_KEY=os.getenv('SECRET_KEY'),
