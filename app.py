@@ -2,7 +2,7 @@ import os
 from flask import (
     Flask, render_template, redirect, url_for
 )
-from flask_bootstrap import Bootstrap
+from flask_talisman import Talisman
 from requests import post, RequestException
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, validators
@@ -14,7 +14,7 @@ URL = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
 
 
 app = Flask(__name__)
-Bootstrap(app)
+Talisman(app)
 
 app.config.update(dict(
     SECRET_KEY=os.getenv('SECRET_KEY'),
